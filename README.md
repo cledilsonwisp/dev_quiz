@@ -1,8 +1,7 @@
 # dev_quiz
-![Badge](https://img.shields.io/badge/App-Flutter-%4247C7c1?style=for-the-badge&logo=flutter)
-![Badge](https://img.shields.io/apm/l/dev)
-
+![Badge](https://img.shields.io/badge/App-Flutter-%237159c1?style=for-the-badge&logo=flutter)
 ## Aplicativo de quiz para devs.
+![Badge](https://img.shields.io/apm/l/dev)
 
 ***
 - [x] Liftoff 💪
