@@ -7,9 +7,9 @@
 - [x] Liftoff 💪
 - [x] Maximum Speed 🏃‍♂️
 - [x] In Orbit 👨‍🚀
-- [] Landing 🔥
-- [] Surface Exploration ⚡
-- [] Accelerating your Career 🚀
+- [ ] Landing 🔥
+- [ ] Surface Exploration ⚡
+- [ ] Accelerating your Career 🚀
 
  
 ![ImageAppp](https://github.com/CledilsonWisp/dev_quiz/blob/main/imageapp.jpg)
