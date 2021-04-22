@@ -1,10 +1,8 @@
 # dev_quiz
-<img src="https://img.shields.io/static/v1?label=App&message=Flutter&color=4D6BE2style=for-the-badge&logo=flutter"/>
+![Badge](https://img.shields.io/badge/App-Flutter-%4247C7c1?style=for-the-badge&logo=flutter)
+![Badge](https://img.shields.io/apm/l/dev)
 
 ## Aplicativo de quiz para devs.
- 
-### Aplicativo construído na NLW da RocketSeat.
-![Badge](https://img.shields.io/apm/l/dev)
 
 ***
 - [x] Liftoff 💪
