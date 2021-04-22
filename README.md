@@ -1,23 +1,38 @@
 # dev_quiz
- Aplicativo construído na NLW da RocketSeat.
+<img src="https://img.shields.io/static/v1?label=App&message=Flutter&color=4D6BE2style=for-the-badge&logo=flutter"/>
+
+## Aplicativo de quiz para devs.
  
- ### Evento gratuito para decolar no desenvolvimento flutter.
- ***
+### Aplicativo construído na NLW da RocketSeat.
+![Badge](https://img.shields.io/apm/l/dev)
+
+***
+- [x] Liftoff 💪
+- [x] Maximum Speed 🏃‍♂️
+- [x] In Orbit 👨‍🚀
+- [] Landing 🔥
+- [] Surface Exploration ⚡
+- [] Accelerating your Career 🚀
+
  
- ![ImageAppp](https://github.com/CledilsonWisp/dev_quiz/blob/main/imageapp.jpg)
+![ImageAppp](https://github.com/CledilsonWisp/dev_quiz/blob/main/imageapp.jpg)
+
+<p align="center">
+ <a href="#objetivo">Objetivo</a> •
+ <a href="#tecnologias">Tecnologias</a> • 
+ <a href="#contribuicao">Contribuição</a> • 
+ <a href="#licenc-a">Licença</a> • 
+ <a href="#autor">Autor</a>
+</p>
+
+<h4 align="center"> 
+	🚀 Em construção...
+</h4>
+
+### 🛠 Tecnologias
+
+As seguintes ferramentas foram usadas na construção do projeto:
+
+- [Flutter](https://flutter.dev/)
+
  
-
-quiz para desenvolvedores
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

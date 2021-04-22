@@ -32,16 +32,16 @@ class QuizCardWidget extends StatelessWidget {
                   height: 40,
                   child:ItemFader(index:1,animationDuration:100, child: Image.asset(imgUlr)),
                 ),
-                SizedBox(height: 20,),
+                SizedBox(height: 24,),
                 Text(title,style: AppTextStyles.bodyBold,),
-                 SizedBox(height: 20,),
+                 SizedBox(height: 24,),
                 Row(
                   children: [
                     Expanded(
                       flex: 1,
                       child: Text(number,style: AppTextStyles.body11,)),
                     Expanded(
-                      flex: 2,
+                      flex: 3,
                       child: LinearProgressIndicator(
                         value: linearProgressBar,
                         backgroundColor: AppColors.chartSecondary,

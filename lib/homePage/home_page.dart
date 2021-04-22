@@ -1,11 +1,14 @@
-import 'package:devquiz/challenge/challenge_page.dart';
+import 'package:devquiz/challenge/quiz_widget.dart';
 import 'package:devquiz/core/app_colors.dart';
 import 'package:devquiz/core/app_images.dart';
+import 'package:devquiz/homePage/home_state.dart';
 import 'package:devquiz/widgets/appbar/appbar.dart';
 import 'package:devquiz/widgets/levelbutton/level_button_widget.dart';
 import 'package:devquiz/widgets/quiz_card/quiz_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
+
+import 'home_controller.dart';
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
 
@@ -14,12 +17,24 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final controller = HomeController();
+
+  @override
+    void initState() {
+      super.initState();
+      controller.fetchData();
+      controller.stateNotifier.addListener(() {
+      setState(() {});
+    });
+    }
+
   @override
   Widget build(BuildContext context) {
     FlutterStatusbarcolor.setStatusBarColor(Colors.transparent);
     FlutterStatusbarcolor.setNavigationBarWhiteForeground(true);
+    if (controller.state == HomeState.sucess){
     return Scaffold(
-        appBar: AppBarWidget(),
+        appBar: AppBarWidget(user: controller.user!),
         body: Column(
           children: [
             SizedBox(
@@ -54,22 +69,23 @@ class _HomePageState extends State<HomePage> {
                 child: GridView.extent(
                   maxCrossAxisExtent: 200,
                   crossAxisSpacing: 16,
-                  
                   mainAxisSpacing: 16,
-                  children: [
-                    QuizCardWidget(title: "Gerenciamento de Estado",imgUlr: AppImages.data, number: "3 de 10",linearProgressBar: 0.3,
-                    onTap: (){
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => ChallengePage()));
-                    },),
-                    QuizCardWidget(title: "Construindo Interfaces",imgUlr: AppImages.laptop,number: "10 de 10",linearProgressBar: 10.0,),
-                    QuizCardWidget(title: "Integração Nativa",imgUlr: AppImages.hierarchy, number: "9 de 10",linearProgressBar: 0.9),
-                    QuizCardWidget(title: "Widgets do Flutter", imgUlr: AppImages.blocks,number: "5 de 10",linearProgressBar: 0.5),
-
-                  ],
+                  children: controller.quizzes!.map((e) => QuizCardWidget(
+                    title: e.title,
+                    imgUlr: AppImages.blocks,
+                    number: "${e.questionAnswered}/${e.question.length}",
+                    linearProgressBar: e.questionAnswered / e.question.length,
+                  )).toList()
                 ),
               ),
             )
           ],
         ));
+        } else {
+          return Scaffold(
+            body: Center(child: CircularProgressIndicator(backgroundColor: AppColors.chartSecondary,
+            valueColor: AlwaysStoppedAnimation(AppColors.chartPrimary),),),
+          );
+        }
   }
 }
