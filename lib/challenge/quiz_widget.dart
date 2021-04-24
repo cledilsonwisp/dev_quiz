@@ -1,24 +1,43 @@
 import 'package:devquiz/challenge/awnsor_widget.dart';
 import 'package:devquiz/core/core.dart';
+import 'package:devquiz/model/awnser_model.dart';
+import 'package:devquiz/model/question_model.dart';
 import 'package:flutter/material.dart';
 
-class QuizWidget extends StatelessWidget {
-  final String title;
+class QuizWidget extends StatefulWidget {
+  final QuestionModel question;
+  final VoidCallback onChange;
 
-  const QuizWidget({Key? key, required this.title}) : super(key: key);
+  const QuizWidget({Key? key, required this.question, required this.onChange}) : super(key: key);
+
+  @override
+  _QuizWidgetState createState() => _QuizWidgetState();
+}
+
+class _QuizWidgetState extends State<QuizWidget> {
+  int? indexSelected = -1;
+  AwnserModel awnser(int index) => widget.question.awnsers[index];
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(height: 64,),
-        Text(title,style: AppTextStyles.heading),
-        SizedBox(height: 24,),
-        AwnsorWidget(title: "Kit de desenvolvimento de interface de usuário",isRight: false,isSelected: false,),
-        AwnsorWidget(title: "Possibilita a criação de aplicativos compilados nativamente",isRight: true,isSelected: true,),
-        AwnsorWidget(title: "Acho que é uma marca de café do Himalaia"),
-        AwnsorWidget(title: "Possibilita a criação de desktops que são muito incríveis"),
-      ],
-      
-    );
+    return Column(children: [
+      SizedBox(
+        height: 64,
+      ),
+      Text(widget.question.title, style: AppTextStyles.heading),
+      SizedBox(
+        height: 24,
+      ),
+      for (var i = 0; i < widget.question.awnsers.length; i++)
+        AwnsorWidget(
+          awnser: awnser(i),
+          isSelected: indexSelected == i,
+          disable: indexSelected != -1,
+          onTap: () {
+                indexSelected = i;
+                setState(() {});
+                Future.delayed(Duration(seconds: 1)).then((value) => widget.onChange());
+          },
+        )
+    ]);
   }
 }

@@ -1,8 +1,12 @@
 import 'package:devquiz/core/app_text_styles.dart';
+import 'package:devquiz/model/question_model.dart';
 import 'package:devquiz/widgets/progress_indicator/progress_indicator_widget.dart';
 import 'package:flutter/material.dart';
 
 class QuestIndicatorWidget extends StatelessWidget {
+  final int curretPage;
+  final int lenght;
+  QuestIndicatorWidget({required this.curretPage, required this.lenght});
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -14,13 +18,15 @@ class QuestIndicatorWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Questão 04",style: AppTextStyles.body15,),
-              Text("De 10",style: AppTextStyles.body15,),
+              IconButton(icon: Icon(Icons.close),onPressed: (){
+                Navigator.pop(context);              },),
+              Text("Questão $curretPage",style: AppTextStyles.body15,),
+              Text("De $lenght",style: AppTextStyles.body15,),
             ],
           ),
           SizedBox(height: 16,),
           ProgressIndicatorWidget(
-            linearProgressBar: 0.7,
+            linearProgressBar: curretPage / lenght,
           )
         ],
       ),

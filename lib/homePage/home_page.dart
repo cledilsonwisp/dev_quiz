@@ -1,3 +1,4 @@
+import 'package:devquiz/challenge/challenge_page.dart';
 import 'package:devquiz/challenge/quiz_widget.dart';
 import 'package:devquiz/core/app_colors.dart';
 import 'package:devquiz/core/app_images.dart';
@@ -75,6 +76,11 @@ class _HomePageState extends State<HomePage> {
                     imgUlr: AppImages.blocks,
                     number: "${e.questionAnswered}/${e.question.length}",
                     linearProgressBar: e.questionAnswered / e.question.length,
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> ChallengePage(
+                        question: e.question,
+                      )));
+                    },
                   )).toList()
                 ),
               ),
