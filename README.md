@@ -8,8 +8,8 @@
 - [x] Maximum Speed 🏃‍♂️
 - [x] In Orbit 👨‍🚀
 - [x] Landing 🔥
-- [ ] Surface Exploration ⚡
-- [ ] Accelerating your Career 🚀
+- [x] Surface Exploration ⚡
+- [x] Accelerating your Career 🚀
 
  
 ![ImageAppp](https://github.com/CledilsonWisp/dev_quiz/blob/main/imageapp.jpg)
@@ -23,7 +23,7 @@
 </p>
 
 <h4 align="center"> 
-	🚀 Em construção...
+	🚀 Concluído
 </h4>
 
 ### 🛠 Tecnologias

@@ -3,11 +3,13 @@ import 'package:devquiz/challenge/quest_indicator_widget.dart';
 import 'package:devquiz/challenge/quiz_widget.dart';
 import 'package:devquiz/challenge/widget/next_button.dart';
 import 'package:devquiz/model/question_model.dart';
+import 'package:devquiz/resultPage/result_page.dart';
 import 'package:flutter/material.dart';
 
 class ChallengePage extends StatefulWidget {
   final List<QuestionModel> question;
-  ChallengePage({Key? key, required this.question}) : super(key: key);
+  final String title;
+  ChallengePage({Key? key, required this.question, required this.title}) : super(key: key);
   @override
   _ChallengePageState createState() => _ChallengePageState();
 }
@@ -28,10 +30,17 @@ class _ChallengePageState extends State<ChallengePage> {
   }
 
   void nextPage() {
-    pageController.nextPage(
-      duration: Duration(milliseconds: 200),
-      curve: Curves.linear,
-    );
+    if (controller.currentPage < widget.question.length)
+      pageController.nextPage(
+        duration: Duration(milliseconds: 200),
+        curve: Curves.linear,
+      );
+  }
+  void onSelected(bool value){
+    if(value){
+      controller.qtdAwnserRight++;
+    }
+    nextPage();
   }
 
   @override
@@ -54,33 +63,36 @@ class _ChallengePageState extends State<ChallengePage> {
           children: widget.question
               .map((e) => QuizWidget(
                     question: e,
-                    onChange: nextPage,
+                    onSelected: onSelected,
                   ))
               .toList()),
       bottomNavigationBar: SafeArea(
         bottom: true,
         child: Padding(
-          padding: const EdgeInsets.only(left: 20.0, right: 20, bottom: 20),
-          child:  ValueListenableBuilder(
-                  valueListenable: controller.currentPageNotifier,
-                  builder: (context, value, _) => Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                 Expanded(child: NextButtonWidget.white(label: "Pular", onTap: nextPage)),
-                                if(value == widget.question.length)
-                                SizedBox(
-                                  width: 7,
-                                ),
-                                if(value == widget.question.length)
-                                Expanded(
-                                    child: NextButtonWidget.green(
-                                  label: "Confirmar",
-                                  onTap: () {},
-                                ))
-                              ],
-                            )
-                  )
-        ),
+            padding: const EdgeInsets.only(left: 20.0, right: 20, bottom: 20),
+            child: ValueListenableBuilder<int>(
+                valueListenable: controller.currentPageNotifier,
+                builder: (context, value, _) => Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        if (value < widget.question.length)  Expanded(
+                            child: NextButtonWidget.white(
+                                label: "Pular", onTap: nextPage)),
+                       
+                        if (value == widget.question.length)
+                          Expanded(
+                              child: NextButtonWidget.green(
+                            label: "Confirmar",
+                            onTap: () {
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> ResultPage(
+                                title: widget.title,
+                                result: controller.qtdAwnserRight,
+                                length: widget.question.length,
+                              )));
+                            },
+                          ))
+                      ],
+                    ))),
       ),
     );
   }

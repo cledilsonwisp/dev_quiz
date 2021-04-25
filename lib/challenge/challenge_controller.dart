@@ -6,4 +6,5 @@ class ChallengeController {
   int get currentPage => currentPageNotifier.value;
   set currentPage (int value)=> currentPageNotifier.value = value;
 
+ int qtdAwnserRight = 0;
 }

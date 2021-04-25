@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class AwnsorWidget extends StatelessWidget {
   final AwnserModel awnser;
   final bool isSelected;
-  final VoidCallback onTap;
+  final ValueChanged<bool> onTap;
   final bool disable;
 
   const AwnsorWidget(
@@ -32,7 +32,9 @@ class AwnsorWidget extends StatelessWidget {
       child: IgnorePointer(
         ignoring: disable,
         child: GestureDetector(
-          onTap: onTap,
+          onTap: (){
+            onTap(awnser.isRight);
+          },
           child: Container(
             padding: EdgeInsets.all(18),
             decoration: BoxDecoration(

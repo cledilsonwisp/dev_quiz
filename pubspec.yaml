@@ -11,6 +11,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_statusbarcolor_ns: ^0.3.0-nullsafety
   google_fonts: ^2.0.00
+  share_plus: ^2.0.1
   transparent_image: ^2.0.0
 
 dev_dependencies:

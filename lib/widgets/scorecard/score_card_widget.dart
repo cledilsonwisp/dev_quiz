@@ -4,6 +4,8 @@ import 'package:devquiz/widgets/chart/chart_widget.dart';
 import 'package:flutter/material.dart';
 
 class ScoreCardWidget extends StatelessWidget {
+  final double porcent;
+  ScoreCardWidget({required this.porcent});
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,7 +21,7 @@ class ScoreCardWidget extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Expanded(flex: 1, child: ChartWidget()),
+            Expanded(flex: 1, child: ChartWidget(porcent: porcent,)),
             Expanded(
               flex: 3,
               child: Padding(
